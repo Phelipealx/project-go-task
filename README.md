@@ -1,6 +1,11 @@
 # ProjectGoTask
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+Command to create the project:
+
+```bash
+npx @angular/cli@19.2.9 new project-go-task --ssr=false --style=css
+```
 
 ## Development server
 
