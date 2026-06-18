@@ -14,6 +14,13 @@ Command to install Tailwind CSS:
 npm i tailwindcss@4.1.4 @tailwindcss/postcss@4.1.4 postcss@8.5.2
 ```
 
+To work with Tailwind CSS, was installld [CDK Angular Material](https://material.angular.dev/cdk/categories).
+Command to install CDK Angular Material:
+
+```bash
+npm i @angular/cdk@19.2.11
+```
+
 ## Development server
 
 To start a local development server, run:
