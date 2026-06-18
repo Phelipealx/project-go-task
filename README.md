@@ -7,6 +7,13 @@ Command to create the project:
 npx @angular/cli@19.2.9 new project-go-task --ssr=false --style=css
 ```
 
+CSS framework using is [Tailwind CSS](https://tailwindcss.com/).
+Command to install Tailwind CSS:
+
+```bash
+npm i tailwindcss@4.1.4 @tailwindcss/postcss@4.1.4 postcss@8.5.2
+```
+
 ## Development server
 
 To start a local development server, run:
