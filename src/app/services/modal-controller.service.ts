@@ -12,17 +12,18 @@ export class ModalControllerService {
   private readonly modalSizeOptions = {
     maxWidth: '620px',
     width: '95%',
+    disableClose: true,
   };
 
   openNewTaskModal() {
-    return this._dialog.open(TaskFormModalComponent, {
+    return this._dialog.open<ITaskFormControls>(TaskFormModalComponent, {
       ...this.modalSizeOptions,
       data: { mode: 'create', formValues: { name: '', description: '' } },
     });
   }
 
   openEditTaskModal(formValues: ITaskFormControls) {
-    return this._dialog.open(TaskFormModalComponent, {
+    return this._dialog.open<ITaskFormControls>(TaskFormModalComponent, {
       ...this.modalSizeOptions,
       data: { mode: 'edit', formValues },
     });
