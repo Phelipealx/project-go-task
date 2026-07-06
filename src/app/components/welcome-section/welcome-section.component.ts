@@ -11,6 +11,10 @@ export class WelcomeSectionComponent {
   private readonly _modalControllerService = inject(ModalControllerService);
 
   openNewTaskModal() {
-    this._modalControllerService.openNewTaskModal();
+    const dialogRef = this._modalControllerService.openNewTaskModal();
+
+    dialogRef.closed.subscribe((formValues) => {
+      console.log('Modal new task closed with form values:', formValues);
+    });
   }
 }
