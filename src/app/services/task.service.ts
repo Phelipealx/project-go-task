@@ -37,6 +37,30 @@ export class TaskService {
     this.todoTasks$.next([...currentList, newTask]);
   }
 
+  public updateTask(
+    taskId: string,
+    taskCurrentStatus: TaskStatus,
+    newTaskName: string,
+    newTaskDescription: string,
+  ) {
+    const currentTaskList = this.getTaskListByStatus(taskCurrentStatus);
+    const currentTaskIndex = currentTaskList.value.findIndex(
+      (task) => task.id === taskId,
+    );
+
+    if (currentTaskIndex !== -1) {
+      const updatedTaskList = [...currentTaskList.value];
+
+      updatedTaskList[currentTaskIndex] = {
+        ...updatedTaskList[currentTaskIndex],
+        name: newTaskName,
+        description: newTaskDescription,
+      };
+      
+      currentTaskList.next(updatedTaskList);
+    }
+  }
+
   public updateTaskStatus(
     taskId: string,
     taskCurrentStatus: TaskStatus,
