@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { ITask } from '../../interfaces/task.interface';
 import { ModalControllerService } from '../../services/modal-controller.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { ModalControllerService } from '../../services/modal-controller.service'
   styleUrl: './task-card.component.css',
 })
 export class TaskCardComponent {
+  @Input({ required: true }) task!: ITask;
+
   private readonly _modalControllerService = inject(ModalControllerService);
 
   openEditTaskModal() {
