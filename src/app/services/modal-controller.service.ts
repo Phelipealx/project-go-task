@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { TaskCommentsModalComponent } from '../components/task-comments-modal/task-comments-modal.component';
 import { TaskFormModalComponent } from '../components/task-form-modal/task-form-modal.component';
 import { ITaskFormControls } from '../interfaces/task-form-controls.interface';
+import { ITask } from '../interfaces/task.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -29,9 +30,10 @@ export class ModalControllerService {
     });
   }
 
-  openTaskCommentsModal() {
+  openTaskCommentsModal(task: ITask) {
     return this._dialog.open(TaskCommentsModalComponent, {
       ...this.modalSizeOptions,
+      data: task,
     });
   }
 }
