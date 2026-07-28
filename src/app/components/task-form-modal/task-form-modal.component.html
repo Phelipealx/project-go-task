@@ -1,0 +1,74 @@
+<form
+  class="rounded-xl overflow-hidden bg-white"
+  [formGroup]="taskForm"
+  (ngSubmit)="onFormSubmit()"
+>
+  <div class="flex gap-1 items-center p-4">
+    <img src="images/icon-new-task.svg" alt="New Task Icon" />
+    <h1 class="font-semibold text-lg">
+      {{ _data.mode === "create" ? "Create" : "Edit" }} Task
+    </h1>
+    <img
+      class="ml-auto cursor-pointer"
+      src="images/icon-close.svg"
+      alt="Close Icon"
+      (click)="closeModal()"
+    />
+  </div>
+  <div class="p-4 border-y border-[#D1D5DB] flex flex-col gap-4">
+    <div>
+      <p class="font-semibold text-sm mb-2">Name</p>
+      <input
+        class="w-full border border-[#D1D5DB] p-3 rounded-lg text-sm font-light text-[#89919F]"
+        type="text"
+        placeholder="Describe what should be done"
+        formControlName="name"
+      />
+      @if (taskForm.get("name")?.touched && taskForm.get("name")?.invalid) {
+        <p class="font-semibold text-sm text-red-500">
+          The field is required and must be at least 10 characters.
+        </p>
+      }
+    </div>
+    <div>
+      <p class="font-semibold text-sm mb-2">Description</p>
+      <input
+        class="w-full border border-[#D1D5DB] p-3 rounded-lg text-sm font-light text-[#89919F]"
+        type="text"
+        placeholder="Add a description"
+        formControlName="description"
+      />
+      @if (
+        taskForm.get("description")?.touched &&
+        taskForm.get("description")?.invalid
+      ) {
+        <p class="font-semibold text-sm text-red-500">
+          The field is required and must be at least 10 characters.
+        </p>
+      }
+    </div>
+  </div>
+  <div class="p-4 flex justify-end gap-2">
+    <button
+      class="py-3 px-4 bg-[#FAFAFA] rounded-xl text-sm font-semibold cursor-pointer active:translate-y-1 transition-transform duration-75"
+      type="button"
+      (click)="closeModal()"
+    >
+      Cancel
+    </button>
+    <button
+      class="{{
+        `py-3 px-4 rounded-xl text-white  text-sm font-semibold cursor-pointer 
+        ${
+          taskForm.invalid
+            ? 'bg-[#D7D8D8]'
+            : 'bg-[#2A89EF] active:translate-y-1 transition-transform duration-75 shadow-md shadow-blue-500/50'
+        }`
+      }}"
+      type="submit"
+      [disabled]="taskForm.invalid"
+    >
+      {{ _data.mode === "create" ? "Create" : "Save" }}
+    </button>
+  </div>
+</form>
